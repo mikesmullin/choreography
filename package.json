@@ -1,0 +1,25 @@
+{
+  "name": "choreography",
+  "version": "0.1.0",
+  "description": "Pure-Javascript Demo Recorder and Integration Testing Suite",
+  "main": "",
+  "dependencies": {
+    "chai": "~1.4.0",
+    "mocha": "~1.7.4",
+    "async2": "~0.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "pure",
+    "javascript",
+    "demo",
+    "recorder",
+    "integration",
+    "test"
+  ],
+  "repository": "git://github.com/mikesmullin/choreography.git",
+  "author": "Mike Smullin <mike@smullindesign.com>",
+  "license": "MIT"
+}
