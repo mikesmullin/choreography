@@ -55,7 +55,14 @@ window.actor = class actor # act with asynchronous assertion
       #Debugger.log ["actor will now read \"#{text}\" from ", e]
       browser_text = undefined
       @_wait_until (-> "\"#{browser_text}\" to equal \"#{text}\""),
-        (-> e = browser.find(e); (browser_text = e[if e.is('input, select') then 'val' else 'text']().toString()) is text.toString()),
+        (-> e = browser.find(e).filter(':visible'); (browser_text = e[if e.is('input, select') then 'val' else 'text']().toString()) is text.toString()),
+        done
+    @
+  expects_element_to_be: (e) ->
+    @async.serial =>
+      done = arguments[arguments.length-1]
+      @_wait_until (-> "#{e} expect to exists in the dom"),
+        (-> (_e = browser.find(e).filter(':visible').length)),
         done
     @
   click: (e) ->
@@ -65,6 +72,17 @@ window.actor = class actor # act with asynchronous assertion
       @_find e, (err, e) =>
         done err if err
         Syn.click {}, e, -> done()
+
+    @
+  moveBw: (a,b) ->
+    @async.serial =>
+      done = arguments[arguments.length-1]
+      #Debugger.log ["actor will now click on ", e]
+      @_find a, (err, a) =>
+        #@_find b, (err, b) =>
+        done err if err
+        Syn.move { to: b }, a , -> done()
+
     @
   drag: (e, coords) ->
     @async.serial =>
@@ -85,7 +103,8 @@ window.actor = class actor # act with asynchronous assertion
   fill: (e, keys) ->
     @type e, '[ctrl]a[ctrl-up]' + keys
   select: (select, value) ->
-    @async.serial (result, done) =>
+    @async.serial =>
+      done = arguments[arguments.length-1]
       #Debugger.log ["actor will now select \"#{value}\" from ", select]
       @_find select, (err, select) =>
         done err if err

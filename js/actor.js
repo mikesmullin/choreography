@@ -94,8 +94,23 @@ window.actor = actor = (function() {
       return _this._wait_until((function() {
         return "\"" + browser_text + "\" to equal \"" + text + "\"";
       }), (function() {
-        e = browser.find(e);
+        e = browser.find(e).filter(':visible');
         return (browser_text = e[e.is('input, select') ? 'val' : 'text']().toString()) === text.toString();
+      }), done);
+    });
+    return this;
+  };
+
+  actor.prototype.expects_element_to_be = function(e) {
+    var _this = this;
+    this.async.serial(function() {
+      var done;
+      done = arguments[arguments.length - 1];
+      return _this._wait_until((function() {
+        return "" + e + " expect to exists in the dom";
+      }), (function() {
+        var _e;
+        return _e = browser.find(e).filter(':visible').length;
       }), done);
     });
     return this;
@@ -111,6 +126,25 @@ window.actor = actor = (function() {
           done(err);
         }
         return Syn.click({}, e, function() {
+          return done();
+        });
+      });
+    });
+    return this;
+  };
+
+  actor.prototype.moveBw = function(a, b) {
+    var _this = this;
+    this.async.serial(function() {
+      var done;
+      done = arguments[arguments.length - 1];
+      return _this._find(a, function(err, a) {
+        if (err) {
+          done(err);
+        }
+        return Syn.move({
+          to: b
+        }, a, function() {
           return done();
         });
       });
@@ -158,7 +192,9 @@ window.actor = actor = (function() {
 
   actor.prototype.select = function(select, value) {
     var _this = this;
-    this.async.serial(function(result, done) {
+    this.async.serial(function() {
+      var done;
+      done = arguments[arguments.length - 1];
       return _this._find(select, function(err, select) {
         var text;
         if (err) {
