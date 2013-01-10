@@ -8,6 +8,11 @@
     "mocha": "*",
     "async2": "https://github.com/mikesmullin/async2/tarball/stable"
   },
+  "bundledDependencies": [
+    "chai",
+    "mocha",
+    "async2"
+  ],
   "scripts": {
     "test": "mocha"
   },
