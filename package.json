@@ -6,7 +6,7 @@
   "dependencies": {
     "chai": "*",
     "mocha": "*",
-    "async2": "https://github.com/mikesmullin/async2/tarball/stable"
+    "async2": "*"
   },
   "bundledDependencies": [
     "chai",
