@@ -6,7 +6,7 @@ Inspired by [Selenium](http://seleniumhq.org/),
  [Capybara](https://github.com/jnicklas/capybara),
  [Zombie.js](http://zombie.labnotes.org/),
  [Jasmine](http://pivotal.github.com/jasmine/),
- [Mocha](http://visionmedia.github.com/mocha/),
+ [Mocha](http://mochajs.org/),
  [Chai](http://chaijs.com/) and
  [Syn.js](http://cloud.github.com/downloads/bitovi/syn/syn.js).
 
