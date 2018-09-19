@@ -5,7 +5,7 @@ As seen on [YouTube](http://www.youtube.com/watch?v=QGy2ItNo7rI).
 Inspired by [Selenium](http://seleniumhq.org/),
  [Capybara](https://github.com/jnicklas/capybara),
  [Zombie.js](http://zombie.labnotes.org/),
- [Jasmine](http://pivotal.github.com/jasmine/),
+ [Jasmine](https://jasmine.github.io/),
  [Mocha](http://visionmedia.github.com/mocha/),
  [Chai](http://chaijs.com/) and
  [Syn.js](http://cloud.github.com/downloads/bitovi/syn/syn.js).
